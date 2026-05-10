@@ -85,6 +85,12 @@ struct RayTracerChallengeTests {
     #expect (a * 0.5 == RTTuple(0.5, -1, 1.5, -2))
   }
 
+  @Test func divideTupleByScalar() {
+    let a = RTTuple(1, -2, 3, -4)
+
+    #expect (a / 2.0 == RTTuple(0.5, -1, 1.5, -2))
+  }
+
 
 
 }

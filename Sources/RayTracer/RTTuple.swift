@@ -50,5 +50,9 @@ struct RTTuple {
   static func *(lhs: RTTuple, rhs: Float) -> RTTuple {
     return RTTuple(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs)
   }
+
+  static func /(lhs: RTTuple, rhs: Float) -> RTTuple {
+    return RTTuple(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs)
+  }
 }
 
