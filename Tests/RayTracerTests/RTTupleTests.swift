@@ -32,11 +32,44 @@ struct RayTracerChallengeTests {
     #expect (v == RTTuple(4, -4, 3, 0))
   }
   
-  @Test func addRTTuples() {
+  @Test func addTwoRTTuples() {
     let a1 = RTTuple(3, -2, 5, 1)
     let a2 = RTTuple(-2, 3, 1, 0)
     
     #expect (a1 + a2 == RTTuple(1, 1, 6, 1))
   }
 
+  @Test func subtractTwoPoints() {
+    let p1 = RTTuple.point(3, 2, 1) 
+    let p2 = RTTuple.point(5, 6, 7)
+
+    #expect (p1 - p2 == RTTuple.vector(-2, -4, -6))
+  }
+
+  @Test func subtractVectorFromPoint() {
+    let p = RTTuple.point(3, 2, 1)
+    let v = RTTuple.vector(5, 6, 7)
+
+    #expect (p - v == RTTuple.point(-2, -4, -6))
+  }
+
+  @Test func subtractTwoVectors() {
+    let v1 = RTTuple.vector(3, 2, 1)
+    let v2 = RTTuple.vector(5, 6, 7)
+
+    #expect (v1 - v2 == RTTuple.vector(-2, -4, -6))
+  }
+
+  @Test func subtractVectorFromZeroVector() {
+    let zero = RTTuple.vector(0, 0, 0)
+    let v = RTTuple.vector(1, -2, 3)
+
+    #expect (zero - v == RTTuple.vector(-1, 2, -3))
+  }
+
+  @Test func negateTuple() {
+    let a = RTTuple(1, -2, 3, -4)
+    
+    #expect (-a == RTTuple(-1, 2, -3, 4))
+  }
 }

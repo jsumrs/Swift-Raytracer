@@ -38,5 +38,13 @@ struct RTTuple {
   static func +(lhs: RTTuple, rhs: RTTuple) -> RTTuple {
     return RTTuple(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w)
   }
+
+  static func -(lhs: RTTuple, rhs: RTTuple) -> RTTuple {
+    return RTTuple(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w)
+  }
+
+  static prefix func -(tuple: RTTuple) -> RTTuple {
+    return RTTuple(-tuple.x, -tuple.y, -tuple.z, -tuple.w)
+  }
 }
 
