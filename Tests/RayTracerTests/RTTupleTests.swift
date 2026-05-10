@@ -72,4 +72,19 @@ struct RayTracerChallengeTests {
     
     #expect (-a == RTTuple(-1, 2, -3, 4))
   }
+
+  @Test func scaleTuple() {
+    let a = RTTuple(1, -2, 3, -4)
+
+    #expect (a * 3.5 == RTTuple(3.5, -7, 10.5, -14))
+  }
+
+  @Test func shrinkTuple() {
+    let a = RTTuple(1, -2, 3, -4)
+
+    #expect (a * 0.5 == RTTuple(0.5, -1, 1.5, -2))
+  }
+
+
+
 }
