@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:RayTracer}",
+      "name": "Debug RayTracer",
+      "target": "RayTracer",
+      "configuration": "debug",
+      "preLaunchTask": "swift: Build Debug RayTracer"
+    },
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:RayTracer}",
+      "name": "Release RayTracer",
+      "target": "RayTracer",
+      "configuration": "release",
+      "preLaunchTask": "swift: Build Release RayTracer"
+    }
+  ]
+}

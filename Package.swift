@@ -11,5 +11,10 @@ let package = Package(
         .executableTarget(
             name: "RayTracer"
         ),
+        .testTarget(
+            name: "RayTracerTests",
+            dependencies: ["RayTracer"], 
+            path: "Tests/RayTracerTests"
+        )
     ]
 )
