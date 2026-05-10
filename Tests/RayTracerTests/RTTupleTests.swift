@@ -106,8 +106,21 @@ struct RayTracerChallengeTests {
 
     v = RTTuple.vector(-1, -2, -3)
     #expect (v.magnitude == 14.0.squareRoot())
+  }
 
+  @Test func normalizeVector() {
+    var v = RTTuple.vector(4, 0, 0)
+    #expect (v.normalized() == RTTuple.vector(1, 0, 0))
 
+    v = RTTuple.vector(1, 2, 3)
+    #expect (v.normalized() == RTTuple.vector(1 / 14.0.squareRoot(), 2 / 14.0.squareRoot(), 3 / 14.0.squareRoot()))
+  }
+
+  @Test func magnitudeOfNormalizedVector() {
+    let v = RTTuple.vector(1, 2, 3)
+    let norm = v.normalized()
+
+    #expect (norm.magnitude == 1.0)
   }
 
 

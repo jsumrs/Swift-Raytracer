@@ -24,6 +24,10 @@ struct RTTuple {
     self.type = w == 1.0 ? .point : .vector // ew i hate this, remove later and refactor points and vectors out...
   }
   
+  func normalized() -> RTTuple {
+    RTTuple(x / magnitude, y / magnitude, z / magnitude, w / magnitude)
+  }
+  
   static func point(_ x: Double, _ y: Double, _ z: Double) -> RTTuple {
     return RTTuple(x, y, z, 1.0)
   }
