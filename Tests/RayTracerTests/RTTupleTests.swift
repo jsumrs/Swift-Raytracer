@@ -91,6 +91,24 @@ struct RayTracerChallengeTests {
     #expect (a / 2.0 == RTTuple(0.5, -1, 1.5, -2))
   }
 
+  @Test func computeMagnitudeOfVector() {
+    var v = RTTuple.vector(1, 0, 0)
+    #expect (v.magnitude == 1.0)
+
+    v = RTTuple.vector(0, 1, 0)
+    #expect (v.magnitude == 1.0)
+
+    v = RTTuple.vector(0, 0, 1)
+    #expect (v.magnitude == 1.0)
+
+    v = RTTuple.vector(1, 2, 3)
+    #expect (v.magnitude == 14.0.squareRoot())
+
+    v = RTTuple.vector(-1, -2, -3)
+    #expect (v.magnitude == 14.0.squareRoot())
+
+
+  }
 
 
 }
