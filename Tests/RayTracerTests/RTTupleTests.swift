@@ -130,5 +130,12 @@ struct RayTracerChallengeTests {
     #expect (RTTuple.dot(a, b) == 20.0)
   }
 
+  @Test func crossProductOfTwoVectors() {
+    let a = RTTuple.vector(1, 2, 3)
+    let b = RTTuple.vector(2, 3, 4)
+    #expect (RTTuple.cross(a, b) == RTTuple.vector(-1, 2, -1))
+    #expect (RTTuple.cross(b, a) == RTTuple.vector(1, -2, 1))
+  }
+
 
 }

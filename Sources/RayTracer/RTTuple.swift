@@ -42,6 +42,12 @@ struct RTTuple {
     (a.z * b.z) +
     (a.w * b.w)
   }
+
+  static func cross(_ a: RTTuple, _ b: RTTuple) -> RTTuple {
+    RTTuple.vector(a.y * b.z - a.z * b.y,
+                   a.z * b.x - a.x * b.z, 
+                   a.x * b.y - a.y * b.x)
+  }
   
   static func ==(lhs: RTTuple, rhs: RTTuple) -> Bool {
     lhs.x == rhs.x &&
