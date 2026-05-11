@@ -1,20 +1,20 @@
 struct Projectile {
-    let position: RTTuple
-    let velocity: RTTuple
+    let position: Point 
+    let velocity: Vec3
 
-    init(at position: RTTuple, with velocity: RTTuple) {
-        self.position = RTTuple.point(position.x, position.y, position.z)
-        self.velocity = RTTuple.vector(velocity.x, velocity.y, velocity.z)
+    init(at position: Point, with velocity: Vec3) {
+        self.position = Point(position.x, position.y, position.z)
+        self.velocity = Vec3(velocity.x, velocity.y, velocity.z)
     }
 }
 
 struct Environment {
-    let gravity: RTTuple
-    let wind: RTTuple 
+    let gravity: Vec3
+    let wind: Vec3
 
-    init(gravity: RTTuple, wind: RTTuple) {
-        self.gravity = RTTuple.vector(gravity.x, gravity.y, gravity.z)
-        self.wind = RTTuple.vector(wind.x, wind.y, wind.z)
+    init(gravity: Vec3, wind: Vec3) {
+        self.gravity = Vec3(gravity.x, gravity.y, gravity.z)
+        self.wind = Vec3(wind.x, wind.y, wind.z)
     }
 }
 
@@ -28,8 +28,8 @@ func tick(_ env: Environment, _ proj: Projectile) -> Projectile {
 struct RayTracer {
 
     static func main() {
-        var p = Projectile(at: RTTuple.point(0, 1, 0), with: RTTuple.vector(1, 1, 0).normalized())
-        let e = Environment(gravity: RTTuple.vector(0, -0.1, 0), wind: RTTuple.vector(-0.01, -0.01, 0))
+        var p = Projectile(at: Point(0, 1, 0), with: Vec3(1, 1, 0).normalized())
+        let e = Environment(gravity: Vec3(0, -0.1, 0), wind: Vec3(-0.01, -0.01, 0))
 
         while p.position.y > 0 {
             print("Position: \(p.position.x), \(p.position.y), \(p.position.z)")
