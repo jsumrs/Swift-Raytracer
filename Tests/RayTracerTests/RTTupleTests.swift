@@ -7,14 +7,14 @@ struct RayTracerChallengeTests {
     let p = Point(4, -4, 3)
     #expect (p == Point(4, -4, 3))
   }
-  
+
   
   @Test 
   func makeVector() {
     let v = Vec3(4, -4, 3)
     #expect (v == Vec3(4, -4, 3))
   }
-  
+
   
   @Test 
   func addTwoVec3() {
@@ -173,6 +173,23 @@ struct RayTracerChallengeTests {
     let c1 = Color(r: 1, g: 0.2, b: 0.4)
     let c2 = Color(r: 0.9, g: 1, b: 0.1)
     #expect (c1 * c2 == Color(r: 0.9, g: 0.2, b: 0.04))
+  }
+
+  @Test
+  func createCanvas() {
+    let c = Canvas(width: 10, height: 20)
+    #expect (c.width == 10)
+    #expect (c.height == 20)
+    #expect (c.background == Color(r: 0, g: 0, b: 0))
+  }
+
+
+  @Test
+  func writePixelToCanvas() {
+    var c = Canvas(width: 10, height: 20)
+    let red = Color(r: 1, g: 0, b: 0)
+    c[2, 3] = red
+    #expect (c[2, 3] == Color(r: 1, g: 0, b: 0))
   }
 
 
