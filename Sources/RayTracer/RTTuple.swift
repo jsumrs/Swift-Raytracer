@@ -35,6 +35,13 @@ struct RTTuple {
   static func vector(_ x: Double, _ y: Double, _ z: Double) -> RTTuple {
     RTTuple(x, y, z, 0.0)
   }
+
+  static func dot(_ a: RTTuple, _ b: RTTuple) -> Double {
+    (a.x * b.x) + 
+    (a.y * b.y) +
+    (a.z * b.z) +
+    (a.w * b.w)
+  }
   
   static func ==(lhs: RTTuple, rhs: RTTuple) -> Bool {
     lhs.x == rhs.x &&

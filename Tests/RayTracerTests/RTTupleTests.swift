@@ -123,5 +123,12 @@ struct RayTracerChallengeTests {
     #expect (norm.magnitude == 1.0)
   }
 
+  @Test func dotProductOfTwoTuples() {
+    let a = RTTuple.vector(1, 2, 3)
+    let b = RTTuple.vector(2, 3, 4)
+
+    #expect (RTTuple.dot(a, b) == 20.0)
+  }
+
 
 }
