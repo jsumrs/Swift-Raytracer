@@ -75,3 +75,15 @@ information inside the w variable, and also inside a type variable. This is terr
 
 I'm going to just use Swift Package Manager for a CLI app. No xcode. Going with VSCode for
 simplicity.
+
+To run the tests just do:
+`swift test`
+
+The magnitude of a vector is given by the pythagorem theorem:
+magnitude(v) = sqrt(x * x + y * y + z * z + w * w)
+
+This chapter introduced a lot of operations you can perform on vectors and points. Normalizing, getting the magnitude, multiplying / scaling, dividing, 
+
+I'll want to go back and replace RTTuple with protocols or something, storing type inside the data is convoluted.
+
+# Chapter 2
