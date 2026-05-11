@@ -48,8 +48,8 @@ struct Vec3 {
     Vec3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs)
   }
 
-  static prefix func -(tuple: Vec3) -> Vec3 {
-    Vec3(-tuple.x, -tuple.y, -tuple.z)
+  static prefix func -(vec: Vec3) -> Vec3 {
+    Vec3(-vec.x, -vec.y, -vec.z)
   }
 
 }
