@@ -12,7 +12,7 @@ struct Color {
       return Int(clamped.rounded())
     }
 
-    return "\(process(r)) \(process(g)) \(process(b)) "
+    return "\(process(r)) \(process(g)) \(process(b))"
   }
 
   static func +(lhs: Color, rhs: Color) -> Color{
