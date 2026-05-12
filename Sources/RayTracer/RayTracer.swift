@@ -29,19 +29,19 @@ struct RayTracer {
 
     static func main() {
         var c = Canvas(width: 900, height: 550)
-        var p = Projectile(at: Point(0, 1, 0), with: Vec3(1, 1.8, 0).normalized() * 11.5)
-        let e = Environment(gravity: Vec3(0, -0.1, 0), wind: Vec3(-0.01, 0, 0))
-        
+        for run in 1...5 {
+            var p = Projectile(at: Point(0, 1, 0), with: Vec3(1, 1.8, 0).normalized() * Double.random(in: 8.0...14.0))
+            let e = Environment(gravity: Vec3(0, -0.1, 0), wind: Vec3(Double.random(in: -0.2...0.2), 0, 0))
+            while p.position.y > 0 {
+                let x = Int(p.position.x)
+                let y = c.height - Int(p.position.y)
 
-        while p.position.y > 0 {
-            let x = Int(p.position.x)
-            let y = c.height - Int(p.position.y)
-            
-            if c.isInBounds(x: x, y: y){
-                c[x, y] = Color(r: 0.9, g: 0.0, b: 0.0)
+                if c.isInBounds(x: x, y: y) {
+                    c[x, y] = Color(r: Double(run) / 10, g: Double(run * 2) / 10, b: Double(run * 3) / 10)
+                }
+
+                p = tick(e, p)
             }
-            
-            p = tick(e, p)
         }
         c.saveToDisk()
 
