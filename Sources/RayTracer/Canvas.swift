@@ -1,3 +1,5 @@
+import Foundation 
+
 struct Canvas {
   let width, height : Int
   let background : Color
@@ -49,5 +51,18 @@ struct Canvas {
       }
     }
     return s
+  }
+
+  func saveToDisk() {
+    let formatter = ISO8601DateFormatter()
+    let filename = formatter.string(from: Date()) + ".ppm"
+    let fileURL = URL(fileURLWithPath: "Output/" + filename)
+    do {
+      try toPPM().write(to: fileURL, atomically: true, encoding: .utf8)
+    } catch {
+      print("Unable to write to file: \(error)")
+    }
+    
+
   }
 }
