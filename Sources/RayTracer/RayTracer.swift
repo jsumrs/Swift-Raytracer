@@ -28,14 +28,22 @@ func tick(_ env: Environment, _ proj: Projectile) -> Projectile {
 struct RayTracer {
 
     static func main() {
-        var p = Projectile(at: Point(0, 1, 0), with: Vec3(1, 1, 0).normalized())
-        let e = Environment(gravity: Vec3(0, -0.1, 0), wind: Vec3(-0.01, -0.01, 0))
+        var c = Canvas(width: 900, height: 550)
+        var p = Projectile(at: Point(0, 1, 0), with: Vec3(1, 1.8, 0).normalized() * 11.5)
+        let e = Environment(gravity: Vec3(0, -0.1, 0), wind: Vec3(-0.01, 0, 0))
+        
 
         while p.position.y > 0 {
-            print("Position: \(p.position.x), \(p.position.y), \(p.position.z)")
+            let x = Int(p.position.x)
+            let y = c.height - Int(p.position.y)
+            
+            if c.isInBounds(x: x, y: y){
+                c[x, y] = Color(r: 0.9, g: 0.0, b: 0.0)
+            }
+            
             p = tick(e, p)
         }
-        print("P has stabilized")
+        c.saveToDisk()
 
     }
 }
