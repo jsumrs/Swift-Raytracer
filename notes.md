@@ -87,3 +87,7 @@ This chapter introduced a lot of operations you can perform on vectors and point
 I'll want to go back and replace RTTuple with protocols or something, storing type inside the data is convoluted.
 
 # Chapter 2
+
+Colors are represented by three 0..1 numbers. BUT it's good to support numbers outside that range throughout the rendering pipeline. If you normalize too early it can lead to parts of the scene being too bright or dark.
+
+Colors are blended by multiplying the together. THis is called the Hadamard or Schur product.
