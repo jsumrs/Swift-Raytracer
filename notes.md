@@ -91,3 +91,11 @@ I'll want to go back and replace RTTuple with protocols or something, storing ty
 Colors are represented by three 0..1 numbers. BUT it's good to support numbers outside that range throughout the rendering pipeline. If you normalize too early it can lead to parts of the scene being too bright or dark.
 
 Colors are blended by multiplying the together. THis is called the Hadamard or Schur product.
+
+PPM is a pretty simple format. https://oceancolor.gsfc.nasa.gov/staff/norman/seawifs_image_cookbook/faux_shuttle/ppm.html
+First line is the version you are using P3 for simple, and P6 for binary.
+The next line is width and height.
+The next is the max color value
+Then its the pixels in R G B format. Note that you can't exceed 70 characters in P3 mode.
+
+
