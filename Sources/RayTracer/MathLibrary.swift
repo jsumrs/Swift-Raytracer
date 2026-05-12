@@ -1,0 +1,8 @@
+// Source - https://stackoverflow.com/a/42817527
+// Posted by David Berry, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-05-11, License - CC BY-SA 3.0
+
+func remap<T: FloatingPoint>(value: T, from: ClosedRange<T>, to: ClosedRange<T>) -> T {
+    return to.lowerBound + (to.upperBound - to.lowerBound) * (value - from.lowerBound) / (from.upperBound - from.lowerBound)
+}
+
