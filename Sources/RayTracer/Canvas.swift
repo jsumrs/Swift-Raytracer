@@ -24,4 +24,12 @@ struct Canvas {
       pixels[y][x] = newValue 
     }
   }
+
+  func getPPMString() -> String {
+    """
+    P3
+    \(width) \(height)
+    255
+    """
+  }
 }

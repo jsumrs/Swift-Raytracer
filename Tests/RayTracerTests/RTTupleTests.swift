@@ -193,4 +193,13 @@ struct RayTracerChallengeTests {
   }
 
 
+  @Test
+  func canvasToPPM() {
+    let c = Canvas(width: 5, height: 3)
+    let header = c.getPPMString().split(separator: "\n").prefix(3).map(String.init)
+    let expectant = ["P3", "\(c.width) \(c.height)", "255"]
+    #expect (Array(header) == expectant)
+  }
+
+
 }
