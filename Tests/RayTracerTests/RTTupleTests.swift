@@ -196,7 +196,7 @@ struct RayTracerChallengeTests {
   @Test
   func canvasToPPMcheckHeader() {
     let c = Canvas(width: 5, height: 3)
-    let header = c.getPPMString().split(separator: "\n").prefix(3).map(String.init)
+    let header = c.toPPM().split(separator: "\n").prefix(3).map(String.init)
     let expectant = ["P3", "\(c.width) \(c.height)", "255"]
     #expect (Array(header) == expectant)
   }
@@ -211,7 +211,7 @@ struct RayTracerChallengeTests {
     c[0, 0] = c1
     c[2, 1] = c2
     c[4, 2] = c3
-    let ppm = c.getPPMString()
+    let ppm = c.toPPM()
     let expectant = """
       P3
       5 3
@@ -219,8 +219,33 @@ struct RayTracerChallengeTests {
       255 0 0 0 0 0 0 0 0 0 0 0 0 0 0
       0 0 0 0 0 0 0 128 0 0 0 0 0 0 0
       0 0 0 0 0 0 0 0 0 0 0 0 0 0 255
+
       """
     #expect (ppm == expectant)
+  }
+
+  @Test
+  func canvasToPPMSplitLongLines() {
+    var c = Canvas(width: 10, height: 2, background: Color(r: 1, g: 0.8, b: 0.6))
+    let expected = """
+                   P3
+                   10 2
+                   255
+                   255 204 153 255 204 153 255 204 153 255 204 153 255 204 153
+                   255 204 153 255 204 153 255 204 153 255 204 153 255 204 153
+                   255 204 153 255 204 153 255 204 153 255 204 153 255 204 153
+                   255 204 153 255 204 153 255 204 153 255 204 153 255 204 153
+
+                   """
+    
+    #expect (c.toPPM() == expected)
+  }
+
+  @Test
+  func canvasToPPMEndsInNewline() {
+    var c = Canvas(width: 5, height: 3)
+    let ppm = c.toPPM()
+    #expect (String(ppm.last!) == "\n")
   }
 
 

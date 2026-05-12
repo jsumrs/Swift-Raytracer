@@ -25,27 +25,29 @@ struct Canvas {
     }
   }
 
-  func getPPMString() -> String {
+  func toPPM() -> String {
     var s = """
                     P3
                     \(width) \(height)
                     255
+
                     """
-    var counter = 0
     for row in pixels {
+      var currentLine = ""
       for pixel in row {
         let ppm = pixel.toPPM()
-        counter += ppm.count
-        
-        // plain ppm file lines can't exceed 70.
-        if counter >= 70 {
-          s.append("\n")
-          counter %= 70
+        let separator = currentLine.isEmpty ? "" : " "
+        if currentLine.count + separator.count + ppm.count > 70 {
+          s.append(currentLine + "\n")
+          currentLine = ppm
+        } else {
+          currentLine += separator + ppm
         }
-        s.append(ppm)
+      }
+      if !currentLine.isEmpty {
+        s.append(currentLine + "\n")
       }
     }
     return s
-
   }
 }
