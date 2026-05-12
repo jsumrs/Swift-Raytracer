@@ -12,7 +12,7 @@ struct Canvas {
     self.pixels = Array(repeating: Array(repeating: background, count: width), count: height)
   }
 
-  private func isInBounds(x: Int, y: Int) -> Bool {
+  func isInBounds(x: Int, y: Int) -> Bool {
     x >= 0 && x < width && y >= 0 && y < height  
   }
 
