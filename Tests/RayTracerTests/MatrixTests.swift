@@ -128,4 +128,57 @@ struct MatrixTests {
 
     #expect (a != b)
   }
+
+
+  @Test
+  func multiplyTwoMat4x4() {
+    let a = Matrix(with: [
+      [1, 2, 3, 4],
+      [5, 6, 7, 8],
+      [9, 8, 7, 6],
+      [5, 4, 3, 2]
+    ])
+
+    let b = Matrix(with: [
+      [-2,  1,  2,  3],
+      [ 3,  2,  1, -1],
+      [ 4,  3,  6,  5],
+      [ 1,  2,  7,  8],
+    ])
+
+    let c = Matrix(with: [
+      [ 20,  22,  50,  48],
+      [ 44,  54, 114, 108],
+      [ 40,  58, 110, 102],
+      [ 16,  26,  46,  42],
+    ])
+
+    #expect (a * b == c)
+  }
+
+  @Test
+  func multiplyMat4x4ByPoint() {
+    let a = Matrix(with: [
+      [1, 2, 3, 4],
+      [2, 4, 4, 2],
+      [8, 6, 4, 1],
+      [0, 0, 0, 1]
+    ])
+    let b = Point(1, 2, 3)
+    let c = Point(18, 24, 33)
+
+    #expect(a * b == c)
+  }
+
+  @Test
+  func multiplyMat4x4ByIdentity() {
+    let a = Matrix(with: [
+      [0, 1, 2, 4],
+      [1, 2, 4, 8],
+      [2, 4, 8,16],
+      [4, 8,16,32],
+    ])
+
+    #expect( a * Matrix.identity4x4 == a)
+  }
 }
