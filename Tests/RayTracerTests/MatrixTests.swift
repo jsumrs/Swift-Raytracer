@@ -181,4 +181,22 @@ struct MatrixTests {
 
     #expect( a * Matrix.identity4x4 == a)
   }
+
+  @Test
+  func transposeMat4x4() {
+    let a = Matrix(with: [
+      [0, 9, 3, 0],
+      [9, 8, 0, 8],
+      [1, 8, 5, 3],
+      [0, 0, 5, 8],
+    ])
+    let b = Matrix(with: [
+      [0,9,1,0],
+      [9,8,8,0],
+      [3,0,5,5],
+      [0,8,3,8],
+    ])
+
+    #expect(a.transpose() == b)
+  }
 }
