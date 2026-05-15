@@ -199,4 +199,9 @@ struct MatrixTests {
 
     #expect(a.transpose() == b)
   }
+
+  @Test
+  func transposeMatIdentity() {
+    #expect(Matrix.identity4x4 == Matrix.identity4x4.transpose())
+  }
 }
