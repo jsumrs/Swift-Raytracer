@@ -50,4 +50,59 @@ struct MatrixTests {
     #expect (m[3,2] == 15.5)
   }
 
+  func equalsCheckMat4x4() {
+    let dataA: [[Double]] = [
+      [ 1, 2, 3, 4],
+      [ 5, 6, 7, 8],
+      [ 9, 8, 7, 6],
+      [ 5, 4, 3, 2],
+    ]
+    let dataB: [[Double]] = [
+      [ 1, 2, 3, 4],
+      [ 5, 6, 7, 8],
+      [ 9, 8, 7, 6],
+      [ 5, 4, 3, 2],
+    ]
+    let a = Matrix(with: dataA)
+    let b = Matrix(with: dataB)
+
+    #expect (a == b)
+  }
+
+  func mismatchElementsEqualsCheckMat4x4() {
+    let dataA: [[Double]] = [
+      [ 1, 2, 3, 4],
+      [ 5, 6, 7, 8],
+      [ 1, 1, 1, 6],
+      [ 5, 4, 3, 2],
+    ]
+    let dataB: [[Double]] = [
+      [ 1, 2, 3, 4],
+      [ 5, 6, 7, 8],
+      [ 9, 8, 7, 6],
+      [ 5, 4, 3, 2],
+    ]
+    let a = Matrix(with: dataA)
+    let b = Matrix(with: dataB)
+
+    #expect (a != b)
+  }
+  func mismatchLengthEqualsCheckMat4x4() {
+    let dataA: [[Double]] = [
+      [ 1, 2, 3, 4],
+      [ 5, 6, 7, 8],
+      [ 1, 1, 1, 6],
+    ]
+    let dataB: [[Double]] = [
+      [ 1, 2, 3, 4],
+      [ 5, 6, 7, 8],
+      [ 9, 8, 7, 6],
+      [ 5, 4, 3, 2],
+    ]
+    let a = Matrix(with: dataA)
+    let b = Matrix(with: dataB)
+
+    #expect (a != b)
+  }
+
 }
