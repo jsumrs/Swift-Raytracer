@@ -98,4 +98,4 @@ The next line is width and height.
 The next is the max color value
 Then its the pixels in R G B format. Note that you can't exceed 70 characters in P3 mode.
 
-
+I split all my tests up on a per type basis. This helps keep the test files small, and easier to navigate.
