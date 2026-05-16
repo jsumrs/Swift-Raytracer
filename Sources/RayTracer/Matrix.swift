@@ -70,4 +70,14 @@ struct Matrix {
     return self[0,0] * self[1,1] - self[0,1] * self[1,0]
   }
 
+  func submatrix(row: Int, col: Int) -> Matrix {
+    // look at each row and filter it out if it matches <row>
+    // look at each row's values and filter it out if it matches <col>
+    let rowFilter = self.data.enumerated().filter { i, _ in i != row}
+    let colFilter = rowFilter.map { $0.element.enumerated().filter {i, _ in i != col}.map { $0.element } }
+    return Matrix(with: colFilter)
+
+
+  }
+
 }

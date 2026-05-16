@@ -215,4 +215,37 @@ struct MatrixTests {
 
     #expect (a.determinant() == 17.0)
   }
+
+
+  @Test 
+  func submatrix3x3() {
+    let a = Matrix(with: [
+      [1, 5, 0],
+      [-3,2,7],
+      [0,6,-3],
+    ])
+    let b = Matrix(with:[
+      [-3, 2],
+      [0, 6],
+    ])
+
+    #expect (a.submatrix(row: 0, col: 2) == b)
+  }
+
+  @Test
+  func submatrix4x4() {
+    let a = Matrix(with: [
+      [-6, 1, 1, 6],
+      [-8, 5, 8, 6],
+      [-1, 0, 8, 2],
+      [-7, 1, -1, 1],
+    ])
+    let b = Matrix(with: [
+      [-6, 1, 6],
+      [-8, 8, 6],
+      [-7, -1, 1],
+    ])
+
+    #expect (a.submatrix(row: 2, col: 1) == b)
+  }
 }
