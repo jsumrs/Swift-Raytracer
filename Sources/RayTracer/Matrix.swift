@@ -63,7 +63,11 @@ struct Matrix {
     let r2 = [self[0,2], self[1,2], self[2,2], self[3,2]]
     let r3 = [self[0,3], self[1,3], self[2,3], self[3,3]]
     return Matrix(with: [r0, r1, r2, r3])
+  }
 
+  func determinant() -> Double {
+    guard self.data.count > 1 else { return 0 }
+    return self[0,0] * self[1,1] - self[0,1] * self[1,0]
   }
 
 }

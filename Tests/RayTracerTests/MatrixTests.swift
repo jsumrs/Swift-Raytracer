@@ -204,4 +204,15 @@ struct MatrixTests {
   func transposeMatIdentity() {
     #expect(Matrix.identity4x4 == Matrix.identity4x4.transpose())
   }
+
+
+  @Test 
+  func determinantOfMat2x2() {
+    let a = Matrix(with: [
+      [ 1, 5],
+      [-3, 2],
+    ])
+
+    #expect (a.determinant() == 17.0)
+  }
 }
