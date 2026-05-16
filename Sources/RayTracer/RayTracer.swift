@@ -53,7 +53,16 @@ struct RayTracer {
             [7, 7, -6, -7],
             [1, -3, 7, 4],
         ])
-        let b = try! a.inverse()
-        print(a * b)
+
+        print(Matrix.identity4x4 * Vec3(4,4,4))
+
+        let b = Matrix(with: [
+            [2, 0, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, 1],
+        ])
+
+        print(b * Vec3(4, 4, 4))
     }
 }
