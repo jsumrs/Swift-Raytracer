@@ -418,6 +418,6 @@ struct MatrixTests {
       [6, -2, 0, 5],
     ])
     let c = a * b
-    #expect(c * (try! b.inverse()) == a)
+    #expect(try! c * b.inverse() == a)
   }
 }
