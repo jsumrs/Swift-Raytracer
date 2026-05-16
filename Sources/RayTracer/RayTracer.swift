@@ -27,7 +27,7 @@ func tick(_ env: Environment, _ proj: Projectile) -> Projectile {
 @main
 struct RayTracer {
 
-    static func main() {
+    func runProjectileSim() {
         var c = Canvas(width: 900, height: 550)
         for run in 1...5 {
             var p = Projectile(at: Point(0, 1, 0), with: Vec3(1, 1.8, 0).normalized() * Double.random(in: 8.0...14.0))
@@ -44,6 +44,16 @@ struct RayTracer {
             }
         }
         c.saveToDisk()
+    }
 
+    static func main() {
+        let a = Matrix(with: [
+            [-5, 2, 6, -8],
+            [1, -5, 1, 8],
+            [7, 7, -6, -7],
+            [1, -3, 7, 4],
+        ])
+        let b = try! a.inverse()
+        print(a * b)
     }
 }

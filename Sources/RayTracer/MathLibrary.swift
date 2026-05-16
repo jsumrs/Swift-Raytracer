@@ -6,3 +6,8 @@ func remap<T: FloatingPoint>(value: T, from: ClosedRange<T>, to: ClosedRange<T>)
     return to.lowerBound + (to.upperBound - to.lowerBound) * (value - from.lowerBound) / (from.upperBound - from.lowerBound)
 }
 
+extension Double {
+  static func nearEqual(_ lhs: Double, _ rhs: Double, epsilon: Double = 0.00001) -> Bool {
+      abs(lhs - rhs) < epsilon
+  }
+}

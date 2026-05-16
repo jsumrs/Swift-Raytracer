@@ -51,11 +51,4 @@ struct Vec3 {
   static prefix func -(vec: Vec3) -> Vec3 {
     Vec3(-vec.x, -vec.y, -vec.z)
   }
-
-}
-
-extension Double {
-  static func nearEqual(_ lhs: Double, _ rhs: Double, epsilon: Double = 0.00001) -> Bool {
-      abs(lhs - rhs) < epsilon
-  }
 }
