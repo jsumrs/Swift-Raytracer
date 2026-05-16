@@ -1,5 +1,9 @@
 struct Matrix {
   let data: [[Double]]
+  var isInvertible: Bool {
+    self.determinant() != 0
+  }
+
   static let identity4x4 = Matrix(with: [
       [1,0,0,0],
       [0,1,0,0],
@@ -66,7 +70,6 @@ struct Matrix {
   }
 
   func determinant() -> Double {
-    guard self.data.count > 1 else { return 0 }
     if self.data.count == 2 {
       return self[0, 0] * self[1, 1] - self[0, 1] * self[1, 0]
     } else {
@@ -95,4 +98,21 @@ struct Matrix {
     minor(row: row, col:col) * ((row + col) % 2 == 0 ? 1 : -1)
   }
 
+  func inverse() throws -> Matrix {
+    guard isInvertible else { throw MatrixError.notInvertible }
+
+    var M2 = Array(repeating: Array(repeating: 0.0, count: self.data[0].count), count: self.data.count)
+    for row in M2.indices {
+      for col in M2[row].indices {
+        let c = self.cofactor(row: row, col: col)
+        M2[col][row] = c / self.determinant()
+      }
+    }
+    return Matrix(with: M2)
+  }
+
+}
+
+enum MatrixError: Error {
+  case notInvertible
 }
