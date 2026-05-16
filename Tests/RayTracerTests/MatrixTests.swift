@@ -286,6 +286,38 @@ struct MatrixTests {
     #expect (a.cofactor(row: 1, col: 0) == -25)
   }
 
+  
+  @Test
+  func determinant3x3() {
+    let a = Matrix(with: [
+      [1, 2, 6],
+      [-5, 8, -4],
+      [2, 6, 4]
+    ])
+
+    #expect (a.cofactor(row: 0, col: 0) == 56)
+    #expect (a.cofactor(row: 0, col: 1) == 12)
+    #expect (a.cofactor(row: 0, col: 2) == -46)
+    #expect (a.determinant() == -196)
+  }
+
+  
+  @Test
+  func determinant4x4() {
+    let a = Matrix(with: [
+      [-2, -8, 3, 5],
+      [-3, 1, 7, 3],
+      [1, 2, -9, 6],
+      [-6, 7, 7, -9],
+    ])
+
+    #expect(a.cofactor(row: 0, col: 0) == 690)
+    #expect(a.cofactor(row: 0, col: 1) == 447)
+    #expect(a.cofactor(row: 0, col: 2) == 210)
+    #expect(a.cofactor(row: 0, col: 3) == 51)
+    #expect(a.determinant() == -4071)
+  }
+
 
 
 }

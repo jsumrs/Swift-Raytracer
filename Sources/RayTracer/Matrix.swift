@@ -67,7 +67,16 @@ struct Matrix {
 
   func determinant() -> Double {
     guard self.data.count > 1 else { return 0 }
-    return self[0,0] * self[1,1] - self[0,1] * self[1,0]
+    if self.data.count == 2 {
+      return self[0, 0] * self[1, 1] - self[0, 1] * self[1, 0]
+    } else {
+      // To get the determinant of a matrix whose count is greater than 2:
+      // Take each element of row 1 multiply it by its cofactor and then sum the products.
+      return self.data[0].enumerated().reduce(0.0) { sum, pair in
+        sum + pair.element * self.cofactor(row: 0, col: pair.offset)
+      }
+
+    }
   }
 
   func submatrix(row: Int, col: Int) -> Matrix {
