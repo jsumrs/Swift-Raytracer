@@ -76,8 +76,14 @@ struct Matrix {
     let rowFilter = self.data.enumerated().filter { i, _ in i != row}
     let colFilter = rowFilter.map { $0.element.enumerated().filter {i, _ in i != col}.map { $0.element } }
     return Matrix(with: colFilter)
+  }
 
+  func minor(row: Int, col: Int) -> Double {
+    self.submatrix(row: row, col: col).determinant()
+  }
 
+  func cofactor(row: Int, col: Int) -> Double {
+    minor(row: row, col:col) * ((row + col) % 2 == 0 ? 1 : -1)
   }
 
 }

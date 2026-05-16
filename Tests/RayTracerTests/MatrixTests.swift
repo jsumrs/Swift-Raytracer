@@ -31,6 +31,7 @@ struct MatrixTests {
     #expect (m[2, 2] ==  1)
   }
 
+
   @Test
   func createMat4x4() {
     let data = [
@@ -71,6 +72,7 @@ struct MatrixTests {
     #expect (a == b)
   }
 
+  
   @Test
   func mismatchElementsEqualsCheckMat4x4() {
     let dataA: [[Double]] = [
@@ -110,6 +112,7 @@ struct MatrixTests {
 
     #expect (a != b)
   }
+
 
   @Test
   func innerMismatchLengthEqualsCheckMat4x4() {
@@ -156,6 +159,7 @@ struct MatrixTests {
     #expect (a * b == c)
   }
 
+
   @Test
   func multiplyMat4x4ByPoint() {
     let a = Matrix(with: [
@@ -170,6 +174,7 @@ struct MatrixTests {
     #expect(a * b == c)
   }
 
+
   @Test
   func multiplyMat4x4ByIdentity() {
     let a = Matrix(with: [
@@ -181,6 +186,7 @@ struct MatrixTests {
 
     #expect( a * Matrix.identity4x4 == a)
   }
+
 
   @Test
   func transposeMat4x4() {
@@ -199,6 +205,7 @@ struct MatrixTests {
 
     #expect(a.transpose() == b)
   }
+
 
   @Test
   func transposeMatIdentity() {
@@ -232,6 +239,7 @@ struct MatrixTests {
     #expect (a.submatrix(row: 0, col: 2) == b)
   }
 
+
   @Test
   func submatrix4x4() {
     let a = Matrix(with: [
@@ -248,4 +256,36 @@ struct MatrixTests {
 
     #expect (a.submatrix(row: 2, col: 1) == b)
   }
+
+
+  @Test
+  func minor4x4() {
+    let a = Matrix(with: [
+      [3, 5, 0],
+      [2, -1, -7],
+      [6, -1, 5],
+    ])
+    let b = a.submatrix(row: 1, col: 0)
+    
+    #expect (b.determinant() == 25)
+    #expect (a.minor(row: 1, col: 0) == 25)
+  }
+
+  
+  @Test
+  func cofactor3x3() {
+    let a = Matrix(with: [
+      [3, 5, 0],
+      [2, -1, -7],
+      [6, -1, 5],
+    ])
+    #expect (a.minor(row: 0, col: 0) == -12)
+    #expect (a.cofactor(row: 0, col: 0) == -12)
+
+    #expect (a.minor(row: 1, col: 0) == 25)
+    #expect (a.cofactor(row: 1, col: 0) == -25)
+  }
+
+
+
 }
