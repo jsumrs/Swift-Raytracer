@@ -99,3 +99,37 @@ The next is the max color value
 Then its the pixels in R G B format. Note that you can't exceed 70 characters in P3 mode.
 
 I split all my tests up on a per type basis. This helps keep the test files small, and easier to navigate.
+
+
+# Chapter 3
+
+This chapter lead up to inverting matrices. Inverting a matrix allows you to undo transformations.
+We invert a matrix using "cofactor expansion"
+
+Matrix inversion requires several pieces:
+- Matrix Multiplication
+  - Take each row from M1 and each column from M2, and multiply the row & col values, then add their products to get the result in M3 at [row, col]
+- Identity Matrix
+  - Similar to the number 1 (the identity for multiplication), the identity matrix multiplied by M results in M unchanged
+- Matrix Transposition
+  - This swaps rows for the columns and the columns for the rows
+- Determinants
+  - A number which can be used to see if a system of equations has a solution
+  - For a 2x2 it is given by the equation 
+    - [a b]
+      [c d]
+    - `ad - bc` 
+  - For matrices larger than 2x2, you grab a row and multiply each element by its cofactor, and add those products together
+- Submatrices
+  - A submatrix is a matrix which had a row and col removed to produce a smaller matrix.
+- Minors
+  - The minor of an element at row i and col j, is the determinant of the submatrix at (i, j)
+- Cofactors
+  - A minor which might have had its sign changed
+  - If you add the row and column indexes together, and the result is odd, then negate the minor
+
+Finally to invert a matrix M1:
+1. You create a matrix M2 which consists of the cofactors of each element of M1.
+2. Then you transpose M2.
+3. Then you divide each element in M2 by the determinant of M1.
+
