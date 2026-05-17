@@ -445,4 +445,28 @@ struct MatrixTests {
     let v = Vec3(-3, 4, 5)
     #expect (t * v == v)
   }
+
+  @Test
+  func scalePointByMatrix() {
+    let s = Matrix.scaling(x: 2, y: 3, z: 4)
+    let p = Point(-4, 6, 8)
+    #expect (s * p == Point(-8, 18, 32))
+  }
+
+
+  @Test
+  func scaleVectorByMatrix() {
+    let s = Matrix.scaling(x: 2, y: 3, z: 4)
+    let v = Vec3(-4, 6, 8)
+    #expect (s * v == Vec3(-8, 18, 32))
+  }
+  
+
+  @Test
+  func scaleVectorByInverseMatrix() {
+    let s = Matrix.scaling(x: 2, y: 3, z: 4)
+    let i = try! s.inverse()
+    let v = Vec3(-4, 6, 8)
+    #expect (i * v == Vec3(-2, 2, 2))
+  }
 }

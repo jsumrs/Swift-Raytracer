@@ -70,6 +70,15 @@ struct Matrix {
     ])
   }
 
+  static func scaling(x: Double, y: Double, z: Double) -> Matrix {
+    Matrix(with: [
+      [x, 0, 0, 0],
+      [0, y, 0, 0],
+      [0, 0, z, 0],
+      [0, 0, 0, 1],
+    ])
+  }
+
   func transpose() -> Matrix {
     let r0 = [self[0,0], self[1,0], self[2,0], self[3,0]]
     let r1 = [self[0,1], self[1,1], self[2,1], self[3,1]]
