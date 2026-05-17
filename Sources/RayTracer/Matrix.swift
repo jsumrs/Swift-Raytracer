@@ -61,6 +61,15 @@ struct Matrix {
     return Point(x, y, z)
   }
 
+  static func translation(x: Double, y: Double, z: Double) -> Matrix {
+    Matrix(with: [
+      [1, 0, 0, x],
+      [0, 1, 0, y],
+      [0, 0, 1, z],
+      [0, 0, 0, 1],
+    ])
+  }
+
   func transpose() -> Matrix {
     let r0 = [self[0,0], self[1,0], self[2,0], self[3,0]]
     let r1 = [self[0,1], self[1,1], self[2,1], self[3,1]]

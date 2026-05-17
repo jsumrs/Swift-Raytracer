@@ -420,4 +420,29 @@ struct MatrixTests {
     let c = a * b
     #expect(try! c * b.inverse() == a)
   }
+
+  
+  @Test
+  func translatePointByMatrix() {
+    let t = Matrix.translation(x: 5, y: -3, z: 2)
+    let p = Point(-3, 4, 5) 
+    #expect (t * p == Point(2, 1, 7))
+  }
+
+
+  @Test
+  func translationPointByInverseMatrix() {
+    let t = Matrix.translation(x: 5, y: -3, z: 2)
+    let i = try! t.inverse()
+    let p = Point(-3, 4, 5) 
+    #expect (i * p == Point(-8, 7, 3))
+  }
+
+
+  @Test
+  func translationVector() {
+    let t = Matrix.translation(x: 5, y: -3, z: 2)
+    let v = Vec3(-3, 4, 5)
+    #expect (t * v == v)
+  }
 }
