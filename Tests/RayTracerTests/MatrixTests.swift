@@ -518,3 +518,22 @@ struct MatrixTests {
     #expect (eighth * p == Point(-2.squareRoot()/2.0, 2.squareRoot()/2.0, 0))
     #expect (quarter * p == Point(-1, 0, 0))
   }
+
+  @Test
+  func shearingTransformations() {
+    let p = Point(2, 3, 4)
+
+    let xy = Matrix.shearing(xToY: 1)
+    let xz = Matrix.shearing(xToZ: 1)
+    let yx = Matrix.shearing(yToX: 1)
+    let yz = Matrix.shearing(yToZ: 1)
+    let zx = Matrix.shearing(zToX: 1)
+    let zy = Matrix.shearing(zToY: 1)
+
+    #expect (xy * p == Point(5, 3, 4))
+    #expect (xz * p == Point(6, 3, 4))
+    #expect (yx * p == Point(2, 5, 4))
+    #expect (yz * p == Point(2, 7, 4))
+    #expect (zx * p == Point(2, 3, 6))
+    #expect (zy * p == Point(2, 3, 7))
+  }

@@ -21,6 +21,8 @@ struct Matrix {
     get { data[row][col] }
   }
 
+  // MARK: - Static Functions
+
   static func ==(lhs: Matrix, rhs: Matrix) -> Bool {
     lhs.data.count == rhs.data.count &&
     zip(lhs.data, rhs.data).allSatisfy({$0.elementsEqual($1, by: { Double.nearEqual($0, $1)})})
@@ -108,7 +110,16 @@ struct Matrix {
     ])
   }
 
+  static func shearing(xToY xy: Double = 0, xToZ xz: Double = 0, yToX yx: Double = 0, yToZ yz: Double = 0, zToX zx: Double = 0, zToY zy: Double = 0) -> Matrix {
+    Matrix(with: [
+      [ 1, xy, xz, 0],
+      [yx,  1, yz, 0],
+      [zx, zy,  1, 0],
+      [ 0,  0,  0, 0],
+    ])
+  }
 
+  // MARK: - Instance Functions
   func transpose() -> Matrix {
     let r0 = [self[0,0], self[1,0], self[2,0], self[3,0]]
     let r1 = [self[0,1], self[1,1], self[2,1], self[3,1]]
