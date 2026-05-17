@@ -446,6 +446,7 @@ struct MatrixTests {
     #expect (t * v == v)
   }
 
+
   @Test
   func scalePointByMatrix() {
     let s = Matrix.scaling(x: 2, y: 3, z: 4)
@@ -469,4 +470,51 @@ struct MatrixTests {
     let v = Vec3(-4, 6, 8)
     #expect (i * v == Vec3(-2, 2, 2))
   }
+
+
+  @Test
+  func reflectionIsScaleByNegative() {
+    let t = Matrix.scaling(x: -1, y: 1, z: 1)
+    let p = Point(2, 3, 4)
+    #expect (t * p == Point(-2, 3, 4))
+  }
+
+
+  @Test
+  func rotatePointAroundXaxis() {
+    let p = Point(0, 1, 0)
+    let eighth = Matrix.rotateX(radians: Double.pi / 4.0)
+    let quarter = Matrix.rotateX(radians: Double.pi / 2.0)
+    #expect (eighth * p == Point(0, 2.squareRoot()/2.0, 2.squareRoot()/2.0))
+    #expect (quarter * p == Point(0, 0, 1))
+  }
+
+
+  @Test
+  func rotateInverselyPointAroundXaxis() {
+    let p = Point(0, 1, 0)
+    let eighth = Matrix.rotateX(radians: Double.pi / 4.0)
+    let inverse = try! eighth.inverse()
+    #expect (inverse * p == Point(0, 2.squareRoot()/2.0,  -2.squareRoot()/2.0))
+  }
 }
+  
+
+  @Test
+  func rotatePointAroundYaxis() {
+    let p = Point(0, 0, 1)
+    let eighth = Matrix.rotateY(radians: Double.pi / 4.0)
+    let quarter = Matrix.rotateY(radians: Double.pi / 2.0)
+    #expect (eighth * p == Point(2.squareRoot()/2.0, 0, 2.squareRoot()/2.0))
+    #expect (quarter * p == Point(1, 0, 0))
+  }
+
+  
+  @Test
+  func rotatePointAroundZaxis() {
+    let p = Point(0, 1, 0)
+    let eighth = Matrix.rotateZ(radians: Double.pi / 4.0)
+    let quarter = Matrix.rotateZ(radians: Double.pi / 2.0)
+    #expect (eighth * p == Point(-2.squareRoot()/2.0, 2.squareRoot()/2.0, 0))
+    #expect (quarter * p == Point(-1, 0, 0))
+  }

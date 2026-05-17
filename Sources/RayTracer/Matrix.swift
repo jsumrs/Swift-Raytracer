@@ -1,3 +1,5 @@
+import Foundation
+
 struct Matrix {
   let data: [[Double]]
   var isInvertible: Bool {
@@ -76,6 +78,33 @@ struct Matrix {
       [0, y, 0, 0],
       [0, 0, z, 0],
       [0, 0, 0, 1],
+    ])
+  }
+
+  static func rotateX(radians r: Double) -> Matrix {
+    Matrix(with: [
+      [1,     0,       0,  0],
+      [0, cos(r), -sin(r), 0],
+      [0, sin(r),  cos(r), 0],
+      [0,     0,       0,  1],
+    ])
+  }
+
+  static func rotateY(radians r: Double) -> Matrix {
+    Matrix(with: [
+      [ cos(r), 0, sin(r), 0],
+      [     0,  1,     0,  0],
+      [-sin(r), 0, cos(r), 0],
+      [     0,  0,     0,  1],
+    ])
+  }
+
+  static func rotateZ(radians r: Double) -> Matrix {
+    Matrix(with: [
+      [cos(r), -sin(r), 0, 0],
+      [sin(r),  cos(r), 0, 0],
+      [    0,       0,  1, 0],
+      [    0,       0,  0, 1],
     ])
   }
 
