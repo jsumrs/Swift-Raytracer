@@ -133,3 +133,18 @@ Finally to invert a matrix M1:
 2. Then you transpose M2.
 3. Then you divide each element in M2 by the determinant of M1.
 
+# Chapter 4
+
+Translation is the moving of a point through a transformation.
+Translating a vector does nothing to the vector
+
+You can scale points and vectors to change their "size"
+
+Side note: NASA uses PI rounded to 15 decimals, as that's pretty darn accurate: https://www.jpl.nasa.gov/edu/news/how-many-decimals-of-pi-do-we-really-need/
+
+Rotation happens clockwise along the respective axis when toward the negative end. If you are viewing the x axis in 3d space, a rotation around the x axis would be clockwise facing the negative x direction.
+
+Shearing is the transformation of space such that straight lines become slanted. Points must remain evenly spaced and such this is done by changing the components in proportion to each other.
+
+Transformations can be applied in sequence but they must be concatenated in reverse order of what you want (they are applied right to left)
+M1 = sheer * translate * rotateX * M
