@@ -537,3 +537,30 @@ struct MatrixTests {
     #expect (zx * p == Point(2, 3, 6))
     #expect (zy * p == Point(2, 3, 7))
   }
+
+  @Test
+  func transformationsInSequence() {
+    let p = Point(1, 0, 1)
+    let A = Matrix.xRotation(by: Double.pi / 2.0)
+    let B = Matrix.scaling(x: 5, y: 5, z: 5)
+    let C = Matrix.translation(x: 10, y: 5, z: 7)
+
+    let p2 = A * p
+    #expect (p2 == Point(1, -1, 0))
+
+    let p3 = B * p2
+    #expect (p3 == Point(5, -5, 0))
+
+    let p4 = C * p3
+    #expect (p4 == Point(15, 0, 7))
+  }
+
+  @Test
+  func chainedTransformsInReverseOrder() {
+    let p = Point(1, 0, 1)
+    let A = Matrix.xRotation(by: Double.pi / 2.0)
+    let B = Matrix.scaling(x: 5, y: 5, z: 5)
+    let C = Matrix.translation(10, 5, 7)
+    let T = C * B * A
+    #expect (T * p == Point(15, 0, 7))
+  }
