@@ -483,8 +483,8 @@ struct MatrixTests {
   @Test
   func rotatePointAroundXaxis() {
     let p = Point(0, 1, 0)
-    let eighth = Matrix.xRotation(radians: Double.pi / 4.0)
-    let quarter = Matrix.xRotation(radians: Double.pi / 2.0)
+    let eighth = Matrix.xRotation(by: Double.pi / 4.0)
+    let quarter = Matrix.xRotation(by: Double.pi / 2.0)
     #expect (eighth * p == Point(0, 2.squareRoot()/2.0, 2.squareRoot()/2.0))
     #expect (quarter * p == Point(0, 0, 1))
   }
@@ -493,7 +493,7 @@ struct MatrixTests {
   @Test
   func rotateInverselyPointAroundXaxis() {
     let p = Point(0, 1, 0)
-    let eighth = Matrix.xRotation(radians: Double.pi / 4.0)
+    let eighth = Matrix.xRotation(by: Double.pi / 4.0)
     let inverse = try! eighth.inverse()
     #expect (inverse * p == Point(0, 2.squareRoot()/2.0,  -2.squareRoot()/2.0))
   }
@@ -503,8 +503,8 @@ struct MatrixTests {
   @Test
   func rotatePointAroundYaxis() {
     let p = Point(0, 0, 1)
-    let eighth = Matrix.yRotation(radians: Double.pi / 4.0)
-    let quarter = Matrix.yRotation(radians: Double.pi / 2.0)
+    let eighth = Matrix.yRotation(by: Double.pi / 4.0)
+    let quarter = Matrix.yRotation(by: Double.pi / 2.0)
     #expect (eighth * p == Point(2.squareRoot()/2.0, 0, 2.squareRoot()/2.0))
     #expect (quarter * p == Point(1, 0, 0))
   }
@@ -513,8 +513,8 @@ struct MatrixTests {
   @Test
   func rotatePointAroundZaxis() {
     let p = Point(0, 1, 0)
-    let eighth = Matrix.zRotation(radians: Double.pi / 4.0)
-    let quarter = Matrix.zRotation(radians: Double.pi / 2.0)
+    let eighth = Matrix.zRotation(by: Double.pi / 4.0)
+    let quarter = Matrix.zRotation(by: Double.pi / 2.0)
     #expect (eighth * p == Point(-2.squareRoot()/2.0, 2.squareRoot()/2.0, 0))
     #expect (quarter * p == Point(-1, 0, 0))
   }

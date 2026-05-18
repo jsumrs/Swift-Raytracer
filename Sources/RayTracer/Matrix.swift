@@ -83,28 +83,28 @@ struct Matrix {
     ])
   }
 
-  static func xRotation(radians r: Double) -> Matrix {
+  static func xRotation(by radians: Double) -> Matrix {
     Matrix(with: [
       [1,     0,       0,  0],
-      [0, cos(r), -sin(r), 0],
-      [0, sin(r),  cos(r), 0],
+      [0, cos(radians), -sin(radians), 0],
+      [0, sin(radians),  cos(radians), 0],
       [0,     0,       0,  1],
     ])
   }
 
-  static func yRotation(radians r: Double) -> Matrix {
+  static func yRotation(by radians: Double) -> Matrix {
     Matrix(with: [
-      [ cos(r), 0, sin(r), 0],
+      [ cos(radians), 0, sin(radians), 0],
       [     0,  1,     0,  0],
-      [-sin(r), 0, cos(r), 0],
+      [-sin(radians), 0, cos(radians), 0],
       [     0,  0,     0,  1],
     ])
   }
 
-  static func zRotation(radians r: Double) -> Matrix {
+  static func zRotation(by radians: Double) -> Matrix {
     Matrix(with: [
-      [cos(r), -sin(r), 0, 0],
-      [sin(r),  cos(r), 0, 0],
+      [cos(radians), -sin(radians), 0, 0],
+      [sin(radians),  cos(radians), 0, 0],
       [    0,       0,  1, 0],
       [    0,       0,  0, 1],
     ])
