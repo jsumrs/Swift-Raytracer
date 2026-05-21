@@ -560,7 +560,7 @@ struct MatrixTests {
     let p = Point(1, 0, 1)
     let A = Matrix.xRotation(by: Double.pi / 2.0)
     let B = Matrix.scaling(x: 5, y: 5, z: 5)
-    let C = Matrix.translation(10, 5, 7)
+    let C = Matrix.translation(x: 10, y: 5, z: 7)
     let T = C * B * A
     #expect (T * p == Point(15, 0, 7))
   }
