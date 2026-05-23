@@ -17,9 +17,10 @@ struct RayTests {
   @Test
   func computePointFromDistance() {
     let r = Ray(origin: Point(2, 3, 4), direction: Vec3(1, 0, 0))
-    #expect (r.position(time: 1) == Point(2, 3, 4))
+    #expect (r.position(time: 0) == Point(2, 3, 4))
     #expect (r.position(time: 1) == Point(3, 3, 4))
     #expect (r.position(time: -1) == Point(1, 3, 4))
     #expect (r.position(time: 2.5) == Point(4.5, 3, 4))
   }
+
 }
