@@ -23,4 +23,49 @@ struct RayTests {
     #expect (r.position(time: 2.5) == Point(4.5, 3, 4))
   }
 
+
+  @Test
+  func rayIntersectsSphereTwoPoints() {
+    let r = Ray(origin: Point(0, 0, -5), direction: Vec3(0,0,1))
+    let s = Sphere()
+    let xs = s.intersect(ray: r)
+
+    #expect (xs.count == 2)
+    #expect (xs[0] == 4.0)
+    #expect (xs[1] == 6.0)
+  }
+
+
+  @Test
+  func rayIntersectsSphereAtTangent() {
+    let r = Ray(origin: Point(0, 1, -5), direction: Vec3(0, 0, 1))
+    let s = Sphere()
+    let xs = s.intersect(ray: r)
+    #expect (xs[0] == xs[1])
+  }
+
+
+  @Test
+  func rayIntersectsSphereFromWithin() {
+    let r = Ray(origin: Point(0, 0, 0), direction: Vec3(0, 0, 1))
+    let s = Sphere()
+    let xs = s.intersect(ray: r)
+
+    #expect (xs.count == 2)
+    #expect (xs[0] == -1.0)
+    #expect (xs[1] == 1.0)
+  }
+
+  
+  @Test
+  func rayIntersectsSphereFromOutside() {
+    let r = Ray(origin: Point(0, 0, 5), direction: Vec3(0, 0, 1))
+    let s = Sphere()
+    let xs = s.intersect(ray: r)
+
+    #expect (xs.count == 2)
+    #expect (xs[0] == -6.0)
+    #expect (xs[1] == -4.0)
+  }
+
 }
