@@ -167,3 +167,6 @@ Shearing is the transformation of space such that straight lines become slanted.
 
 Transformations can be applied in sequence but they must be concatenated in reverse order of what you want (they are applied right to left)
 M1 = sheer * translate * rotateX * M
+
+## Clock
+My points weren't drawing in the right positions. I was rotating around the z axis correctly, but applying the translation to the point every turn. I also needed to remap the coordinates to a proper range, since my origin was at the center, some coordinates were in negative quadrants.
