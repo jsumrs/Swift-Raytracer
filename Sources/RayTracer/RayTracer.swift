@@ -47,22 +47,25 @@ struct RayTracer {
     }
 
     static func main() {
-        let a = Matrix(with: [
-            [-5, 2, 6, -8],
-            [1, -5, 1, 8],
-            [7, 7, -6, -7],
-            [1, -3, 7, 4],
-        ])
+        let width = 100
+        let height = 100
+        var c = Canvas(width: width, height: height, background: Color(r: 1, g: 1, b: 1))
+        let p = Point(1, 0, 0) 
+        let t = Matrix.translation(x: Double(width) * 0.75, y: Double(height) * 0.5, z: 0.0)
+        let threeOclock = t * p
 
-        print(Matrix.identity4x4 * Vec3(4,4,4))
+        for i in 1...12 {
+          let color = Color(r: 1, g: 0, b: 0)
+          let zeighthTurn = Matrix.zRotation(by: (Double.pi / 6.0) * Double(i))
+          let cur = zeighthTurn * threeOclock
+          print("Cur: \(cur.x) \(cur.y)")
+          let x = Int(remap(value: cur.x, from: -100.0...100.0, to: 0.0...99.0))
+          let y = Int(remap(value: cur.y, from: -100.0...100.0, to: 0.0...99.0))
+          c[x, y] = color
 
-        let b = Matrix(with: [
-            [2, 0, 0, 0],
-            [0, 1, 0, 0],
-            [0, 0, 1, 0],
-            [0, 0, 0, 1],
-        ])
+          
+        }
+        c.saveToDisk()
 
-        print(b * Vec3(4, 4, 4))
     }
 }
