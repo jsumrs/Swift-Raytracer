@@ -1,11 +1,8 @@
 import Foundation
 
 struct Sphere {
-  let ID: UUID
+  let ID = UUID()
 
-  init() {
-    ID = UUID()
-  }
 
   static func ==(lhs: Sphere, rhs: Sphere) -> Bool {
     return lhs.ID == rhs.ID
