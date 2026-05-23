@@ -2,6 +2,25 @@ This statement is my commitment to this project. I will complete the book and ma
 using Swift & Metal (?).
 
 
+# Commit Messages
+
+I'm following the conventionalcommit and angular guidelines for commit messages. For reference:
+Type
+
+Must be one of the following:
+
+    build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+    ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+    docs: Documentation only changes
+    feat: A new feature
+    fix: A bug fix
+    perf: A code change that improves performance
+    refactor: A code change that neither fixes a bug nor adds a feature
+    style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+    test: Adding missing tests or correcting existing tests
+
+
+
 # Preface 
 I'll learn how to implement a Whitted Ray Tracer (Turner Whitted). Which goes something like this:
 
