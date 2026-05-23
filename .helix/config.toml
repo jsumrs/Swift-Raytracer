@@ -1,2 +1,2 @@
 [keys.normal]
-space = { x = [":sh swift run && open Output/$(ls Output/ -t | head -n 1)" ] }
+space = { x = [":sh swift run && open Output/$(ls Output/ -t | head -n 1)" ], t = [":sh swift test"] }
