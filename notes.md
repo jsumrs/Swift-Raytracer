@@ -175,3 +175,8 @@ My points weren't drawing in the right positions. I was rotating around the z ax
 # Chapter 5
 Rays are cast from an origin (a point), and have a direction (a vector)
 Ray intersections are very important for a "ray" tracer. these are calculated with a formula, further reading search "line-sphere intersection"
+
+An interesection "hit" is the lowest non-negative intersection of a list of intersections. This is used to determine which intersection is infront of the other, along a ray.
+
+Instead of moving objects around in the scene, it's much easier to move the ray around and then keep the object's origin centered at (0,0,0). To achieve this, any transformation you want to do to the object, should be done to the ray instead, only you should do the inverse of the original transformation.
+Transformations are just a method for moving between different coordinate systems. For me, primarily between world space and object space.
