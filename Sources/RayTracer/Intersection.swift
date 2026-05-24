@@ -5,6 +5,7 @@ struct Intersection {
   let id: UUID // Id of the object which was intersected
 
   static func aggregate(intersections: Intersection...) -> [Intersection] {
-    intersections
+    intersections.sorted { $0.t < $1.t }
   }
+
 }
