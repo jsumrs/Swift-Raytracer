@@ -4,7 +4,7 @@ struct Sphere {
   let id = UUID()
   let transform: Matrix
 
-  init(transform: Matrix = Matrix.identity4x4) {
+  init(with transform: Matrix = Matrix.identity4x4) {
     self.transform = transform
   }
 

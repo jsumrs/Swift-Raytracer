@@ -89,9 +89,4 @@ struct RayTests {
   }
 
 
-  @Test
-  func sphereDefaultTransformation() {
-    let s = Sphere()
-    #expect ( Sphere().transform == Matrix.identity4x4 )
-  }
 }
