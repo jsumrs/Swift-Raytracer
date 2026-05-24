@@ -2,6 +2,11 @@ import Foundation
 
 struct Sphere {
   let id = UUID()
+  let transform: Matrix
+
+  init(transform: Matrix = Matrix.identity4x4) {
+    self.transform = transform
+  }
 
 
   static func ==(lhs: Sphere, rhs: Sphere) -> Bool {

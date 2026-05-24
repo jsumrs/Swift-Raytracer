@@ -88,4 +88,10 @@ struct RayTests {
     #expect ( r2.direction == Vec3(0, 3, 0) )
   }
 
+
+  @Test
+  func sphereDefaultTransformation() {
+    let s = Sphere()
+    #expect ( Sphere().transform == Matrix.identity4x4 )
+  }
 }
