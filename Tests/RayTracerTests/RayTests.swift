@@ -68,4 +68,24 @@ struct RayTests {
     #expect (xs[1].t == -4.0)
   }
 
+
+  @Test
+  func translateRay() {
+    let r = Ray(origin: Point(1, 2, 3), direction: Vec3(0, 1, 0))
+    let m = Matrix.translation(x: 3, y: 4, z: 5)
+    let r2 = m * r
+
+    #expect ( r2.origin == Point(4, 6, 8))
+    #expect ( r2.direction == Vec3(0, 1, 0))
+  }
+
+  @Test
+  func scaleRay() {
+    let r = Ray(origin: Point(1, 2, 3), direction: Vec3(0, 1, 0))
+    let m = Matrix.scaling(x: 2, y: 3, z: 4)
+    let r2 = m * r
+    #expect ( r2.origin == Point(2, 6, 12) )
+    #expect ( r2.direction == Vec3(0, 3, 0) )
+  }
+
 }

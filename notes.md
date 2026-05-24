@@ -170,3 +170,8 @@ M1 = sheer * translate * rotateX * M
 
 ## Clock
 My points weren't drawing in the right positions. I was rotating around the z axis correctly, but applying the translation to the point every turn. I also needed to remap the coordinates to a proper range, since my origin was at the center, some coordinates were in negative quadrants.
+
+
+# Chapter 5
+Rays are cast from an origin (a point), and have a direction (a vector)
+Ray intersections are very important for a "ray" tracer. these are calculated with a formula, further reading search "line-sphere intersection"

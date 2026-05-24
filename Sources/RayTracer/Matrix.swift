@@ -65,6 +65,10 @@ struct Matrix {
     return Point(x, y, z)
   }
 
+  static func *(lhs: Matrix, rhs: Ray) -> Ray {
+    Ray(origin: lhs * rhs.origin, direction: lhs * rhs.direction)
+  }
+
   static func translation(x: Double, y: Double, z: Double) -> Matrix {
     Matrix(with: [
       [1, 0, 0, x],
