@@ -1,11 +1,11 @@
 import Foundation
 
 struct Sphere {
-  let ID = UUID()
+  let id = UUID()
 
 
   static func ==(lhs: Sphere, rhs: Sphere) -> Bool {
-    return lhs.ID == rhs.ID
+    return lhs.id == rhs.id
   }
 
   static func !=(lhs: Sphere, rhs: Sphere) -> Bool {
@@ -26,15 +26,15 @@ struct Sphere {
     return (b * b) - 4 * a * c
   }
 
-  func intersect(ray: Ray) -> [Double] {
+  func intersect(ray: Ray) -> [Intersection] {
     let disc = discriminant(ray: ray)
     guard disc >= 0 else { return [] }
     let root = disc.squareRoot()
     let (a, b, _) = coefficients(of: ray)
     let t1 = (-b - root) / (2 * a)
     let t2 = (-b + root) / (2 * a)
-    return t1 < t2 ? [t1, t2] : [t2, t1]
-
+    let i1 = Intersection(t: t1, id: id)
+    let i2 = Intersection(t: t2, id: id) 
+    return Intersection.aggregate(intersections: i1, i2)
   }
-
 }

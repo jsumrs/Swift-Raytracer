@@ -31,8 +31,8 @@ struct RayTests {
     let xs = s.intersect(ray: r)
 
     #expect (xs.count == 2)
-    #expect (xs[0] == 4.0)
-    #expect (xs[1] == 6.0)
+    #expect (xs[0].t == 4.0)
+    #expect (xs[1].t == 6.0)
   }
 
 
@@ -41,7 +41,7 @@ struct RayTests {
     let r = Ray(origin: Point(0, 1, -5), direction: Vec3(0, 0, 1))
     let s = Sphere()
     let xs = s.intersect(ray: r)
-    #expect (xs[0] == xs[1])
+    #expect (xs[0].t == xs[1].t)
   }
 
 
@@ -52,8 +52,8 @@ struct RayTests {
     let xs = s.intersect(ray: r)
 
     #expect (xs.count == 2)
-    #expect (xs[0] == -1.0)
-    #expect (xs[1] == 1.0)
+    #expect (xs[0].t == -1.0)
+    #expect (xs[1].t == 1.0)
   }
 
   
@@ -64,8 +64,8 @@ struct RayTests {
     let xs = s.intersect(ray: r)
 
     #expect (xs.count == 2)
-    #expect (xs[0] == -6.0)
-    #expect (xs[1] == -4.0)
+    #expect (xs[0].t == -6.0)
+    #expect (xs[1].t == -4.0)
   }
 
 }
